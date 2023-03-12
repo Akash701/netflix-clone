@@ -8,3 +8,6 @@ const khight20 = SizedBox(height: 20);
 
 //BorderRadius
 final BorderRadius kRadius20 = BorderRadius.circular(20);
+
+const kMainImage =
+    "https://www.crunchyroll.com/imgsrv/display/thumbnail/480x720/catalog/crunchyroll/c73bc7c503920b61c100eab128e70d5e.jpe";
