@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/core/colors.dart';
 
+ValueNotifier<bool> soundNotifier = ValueNotifier(false);
+
 class VideListItem extends StatelessWidget {
   final int index;
   const VideListItem({
@@ -25,17 +27,23 @@ class VideListItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 //Left side
-                CircleAvatar(
-                  backgroundColor: kBlackColor.withOpacity(0.7),
-                  radius: 30,
-                  child: IconButton(
-                      onPressed: () {
-                        clicked = true;
-                      },
-                      icon: clicked == false
-                          ? const Icon(Icons.volume_off_rounded)
-                          : const Icon(Icons.volume_up)),
-                ),
+                ValueListenableBuilder(
+                    valueListenable: soundNotifier,
+                    builder: (context, index, _) {
+                      return CircleAvatar(
+                        backgroundColor: kBlackColor.withOpacity(0.7),
+                        radius: 30,
+                        child: IconButton(
+                            onPressed: () {
+                              soundNotifier.value == false
+                                  ? soundNotifier.value = true
+                                  : soundNotifier.value = false;
+                            },
+                            icon: soundNotifier.value == false
+                                ? const Icon(Icons.volume_off_rounded)
+                                : const Icon(Icons.volume_up)),
+                      );
+                    }),
 
                 //Right side
                 Column(
