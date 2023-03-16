@@ -49,10 +49,10 @@ class VideListItem extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 15),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 15),
                       child: CircleAvatar(
-                        backgroundImage: const NetworkImage(
+                        backgroundImage: NetworkImage(
                             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7bNhpTIID9flag4wQK78f4TG_RGOrPrjlYGAPZeFqJhgn5g5j'),
                         radius: 30,
                       ),
@@ -102,7 +102,7 @@ class VideoActionWidgets extends StatelessWidget {
           ),
           Text(
             title,
-            style: TextStyle(color: kWhiteColor, fontSize: 14),
+            style: const TextStyle(color: kWhiteColor, fontSize: 14),
           ),
         ],
       ),

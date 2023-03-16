@@ -16,7 +16,6 @@ class ScreenHome extends StatelessWidget {
   const ScreenHome({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    ScrollController listScrollController = ScrollController();
     final size = MediaQuery.of(context).size;
     return Scaffold(
         body: ValueListenableBuilder(
@@ -24,21 +23,18 @@ class ScreenHome extends StatelessWidget {
       builder: (context, index, _) {
         return NotificationListener<UserScrollNotification>(
           onNotification: (notification) {
-            final ScrollDirection direction = notification.direction;
-            if (direction == ScrollDirection.reverse &&
-                listScrollController.hasClients) {
-              final position = listScrollController.position.minScrollExtent;
-              scrollNotifier.value = false;
-            } else if (direction == ScrollDirection.forward &&
-                listScrollController.hasClients) {
-              final position = listScrollController.position.minScrollExtent;
+            final direction = notification.metrics;
+            if (direction.atEdge) {
               scrollNotifier.value = true;
+            } else {
+              scrollNotifier.value = false;
             }
             return true;
           },
           child: Stack(
             children: [
               ListView(
+                physics: ClampingScrollPhysics(),
                 children: [
                   const BackgroundCard(),
                   MainTitleCard(
@@ -68,11 +64,10 @@ class ScreenHome extends StatelessWidget {
                 ],
               ),
               scrollNotifier.value == true
-                  ? AnimatedContainer(
-                      duration: const Duration(microseconds: 1000),
+                  ? Container(
                       width: double.infinity,
                       height: 100,
-                      color: Colors.transparent,
+                      color: Colors.black.withOpacity(0.2),
                       child: Column(
                         children: [
                           Padding(

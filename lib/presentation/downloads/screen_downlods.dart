@@ -26,7 +26,7 @@ class ScreenDownload extends StatelessWidget {
       body: ListView.separated(
         itemCount: _widgetList.length,
         separatorBuilder: (BuildContext context, int index) {
-          return SizedBox(
+          return const SizedBox(
             height: 20,
           );
         },
@@ -97,17 +97,17 @@ class Section2 extends StatelessWidget {
               ),
               DownloadImageWidget(
                 imageList: imageList[2],
-                margin: EdgeInsets.only(left: 150),
+                margin: const EdgeInsets.only(left: 150),
                 angle: 20 * pi / 180,
               ),
               DownloadImageWidget(
                 imageList: imageList[1],
-                margin: EdgeInsets.only(right: 150),
+                margin: const EdgeInsets.only(right: 150),
                 angle: -20 * pi / 180,
               ),
               DownloadImageWidget(
                 imageList: imageList[0],
-                margin: EdgeInsets.only(right: 0),
+                margin: const EdgeInsets.only(right: 0),
                 // angle: -30 * pi / 180,
               ),
             ],

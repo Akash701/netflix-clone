@@ -12,10 +12,10 @@ import '../../core/colors.dart';
 class ScreenMainPage extends StatelessWidget {
   ScreenMainPage({Key? key}) : super(key: key);
   final _pages = [
-    ScreenHome(),
-    ScreenNewHot(),
-    ScreenFastLaugh(),
-    ScreenSearch(),
+    const ScreenHome(),
+    const ScreenNewHot(),
+    const ScreenFastLaugh(),
+    const ScreenSearch(),
     ScreenDownload(),
   ];
 
@@ -29,7 +29,7 @@ class ScreenMainPage extends StatelessWidget {
             builder: (context, int index, _) {
               return _pages[index];
             }),
-        bottomNavigationBar: BottomNavigation(),
+        bottomNavigationBar: const BottomNavigation(),
       ),
     );
   }
