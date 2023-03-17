@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix/presentation/new&hot/widgets/video_widget.dart';
 
 import '../../../core/colors.dart';
 import '../../../core/constants.dart';
@@ -46,39 +47,10 @@ class ComingSoon extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              Stack(
-                children: [
-                  SizedBox(
-                    height: size.width * 00.6,
-                    width: size.width - 50,
-                    // color: Colors.yellow,
-                    child: Image.network(
-                      "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/tCeGkM4paxJsweXv6uyrI8Bc2ZH.jpg",
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 10,
-                    right: 10,
-                    child: ValueListenableBuilder(
-                        valueListenable: newAndHotSound,
-                        builder: (context, index, _) {
-                          return CircleAvatar(
-                            backgroundColor: kBlackColor.withOpacity(0.7),
-                            radius: 20,
-                            child: IconButton(
-                                onPressed: () {
-                                  newAndHotSound.value == false
-                                      ? newAndHotSound.value = true
-                                      : newAndHotSound.value = false;
-                                },
-                                icon: newAndHotSound.value == false
-                                    ? const Icon(Icons.volume_off_rounded)
-                                    : const Icon(Icons.volume_up)),
-                          );
-                        }),
-                  ),
-                ],
+              VideoWidget(
+                size: size,
+                movieImage:
+                    "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/tCeGkM4paxJsweXv6uyrI8Bc2ZH.jpg",
               ),
               const SizedBox(
                 height: 20,

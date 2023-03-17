@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/core/colors.dart';
 import 'package:netflix/presentation/new&hot/widgets/Coming_soon.dart';
+import 'package:netflix/presentation/new&hot/widgets/everyone_watching.dart';
+import 'package:netflix/presentation/new&hot/widgets/video_widget.dart';
 
 import '../../core/constants.dart';
 import '../home/widgets/custome_button_widget.dart';
@@ -59,40 +61,30 @@ class ScreenNewHot extends StatelessWidget {
         body: TabBarView(
           children: [
             ListView.separated(
+                shrinkWrap: true,
                 itemBuilder: (context, index) {
                   return const ComingSoon();
                 },
-                separatorBuilder: (cotext, index) {
+                separatorBuilder: (context, index) {
                   return const SizedBox(
                     height: 20,
                   );
                 },
                 itemCount: 10),
-            _buildEveryoneWatching(context),
+            ListView.separated(
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return EveryoneWatching(
+                    size: size,
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return khight50;
+                },
+                itemCount: 10),
           ],
         ),
       ),
     );
   }
-}
-
-Widget _buildEveryoneWatching(BuildContext context) {
-  Size size = MediaQuery.of(context).size;
-  return ListView(
-    children: [
-      khight,
-      Row(
-        children: [
-          const SizedBox(
-            width: 50,
-          ),
-          Container(
-            color: Colors.blue,
-            height: 500,
-            width: size.width - 50,
-          ),
-        ],
-      )
-    ],
-  );
 }
